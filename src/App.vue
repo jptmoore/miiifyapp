@@ -1,17 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <img id="desk" src="./assets/desk.jpg" />
+  </div>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@recogito/annotorious@2.5.10/dist/annotorious.min.css"
+  />
+  <Footer />
 </template>
 
+
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Footer from './components/Footer'
+
+import { Annotorious } from "@recogito/annotorious";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Footer,
+  },
+  data() {
+    return {
+      anno: {},
+    };
+  },
+  mounted() {
+    this.anno = new Annotorious({
+      image: document.getElementById("desk"),
+    });
+  },
+};
 </script>
 
 <style>
