@@ -14,5 +14,6 @@ export default {
       this.$emit("btn-save");
     },
   },
+  emits: ['btn-load', 'btn-save'],
 };
 </script>

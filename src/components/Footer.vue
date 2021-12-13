@@ -1,11 +1,11 @@
 <template>
-  <controls>
+  <div>
     <h1>{{ title }}</h1>
     <Button
       @btn-load="$emit('button-load')"
       @btn-save="$emit('button-save')"
     />
-  </controls>
+  </div>
 </template>
 
 <script>
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style scoped>
-controls {
+div {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 20px;

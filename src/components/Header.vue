@@ -1,7 +1,7 @@
 <template>
-  <brand>
+  <div>
     <p>miiify.rocks</p>
-  </brand>
+  </div>
 </template>
 
 <style scoped>
@@ -9,7 +9,7 @@ a {
   color: #333;
 }
 
-brand {
+div {
   margin-top: 30px;
   text-align: center;
 }
