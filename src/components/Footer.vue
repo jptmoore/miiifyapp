@@ -1,16 +1,32 @@
 <template>
-  <footer>
-    <p>miiify.rocks</p>
-  </footer>
+  <controls>
+    <h1>{{ title }}</h1>
+    <Button
+      @btn-load="$emit('button-load')"
+      @btn-save="$emit('button-save')"
+    />
+  </controls>
 </template>
 
-<style scoped>
-a {
-  color: #333;
-}
+<script>
+import Button from "./Button";
 
-footer {
-  margin-top: 30px;
-  text-align: center;
+export default {
+  name: "Header",
+  props: {
+    title: String,
+  },
+  components: {
+    Button,
+  },
+  computed: {},
+};
+</script>
+
+<style scoped>
+controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
 }
 </style>
