@@ -9,7 +9,11 @@
       href="https://cdn.jsdelivr.net/npm/@recogito/annotorious@2.5.10/dist/annotorious.min.css"
     />
   </div>
-  <Footer @button-load="loadAnnotations" @button-save="saveAnnotations" title="annotations" />
+  <Footer
+    @button-load="loadAnnotations"
+    @button-save="saveAnnotations"
+    title="annotations"
+  />
 </template>
 
 <script>
@@ -17,6 +21,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import { Annotorious } from "@recogito/annotorious";
+
 
 export default {
   name: "App",
@@ -26,19 +31,23 @@ export default {
   },
   data() {
     return {
-      anno: {},
+      anno: [],
     };
   },
   methods: {
-    loadAnnotations() {
+    async loadAnnotations() {
       console.log("loadAnnotations");
+      const res = await fetch("http://localhost:5555/annotations/demo/", {});
+      const data = await res.json();
+      console.log(data.first.items);
+      self.anno.setAnnotations(data.first.items);
     },
     saveAnnotations() {
       console.log("saveAnnotations");
     },
   },
   mounted() {
-    this.anno = new Annotorious({
+    self.anno = new Annotorious({
       image: document.getElementById("desk"),
     });
   },
