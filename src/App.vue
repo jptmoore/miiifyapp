@@ -22,6 +22,7 @@ import Footer from "./components/Footer";
 
 import { Annotorious } from "@recogito/annotorious";
 
+const axios = require("axios");
 
 export default {
   name: "App",
@@ -37,13 +38,25 @@ export default {
   methods: {
     async loadAnnotations() {
       console.log("loadAnnotations");
-      const res = await fetch("http://localhost:5555/annotations/demo/", {});
-      const data = await res.json();
-      console.log(data.first.items);
-      self.anno.setAnnotations(data.first.items);
+      try {
+        const res = await axios.get("/annotations/demo/");
+        self.anno.setAnnotations(res.data.first.items);
+      } catch (err) {
+        // Handle Error Here
+        console.error(err);
+      }
     },
-    saveAnnotations() {
+    async saveAnnotations() {
       console.log("saveAnnotations");
+      const annotation = self.anno.getAnnotations()[0];
+      console.log(annotation);
+      try {
+        const res = await axios.post("/annotations/demo/", annotation);
+        console.log(res);
+      } catch (err) {
+        // Handle Error Here
+        console.error(err);
+      }
     },
   },
   mounted() {
