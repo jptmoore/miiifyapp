@@ -51,7 +51,7 @@ export default {
       const annotation = self.anno.getAnnotations()[0];
       console.log(annotation);
       try {
-        const res = await axios.post("/annotations/demo/", annotation);
+        const res = await axios.put("/annotations/demo/test1", annotation);
         console.log(res);
       } catch (err) {
         // Handle Error Here
