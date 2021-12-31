@@ -10,8 +10,7 @@
     />
   </div>
   <Footer
-    @button-load="loadAnnotations"
-    @button-save="saveAnnotations"
+    @button-load="getAnnotations"
     title="annotations"
   />
 </template>
@@ -36,8 +35,8 @@ export default {
     };
   },
   methods: {
-    async loadAnnotations() {
-      console.log("loadAnnotations");
+    async getAnnotations() {
+      console.log("getAnnotations");
       try {
         const res = await axios.get("/annotations/demo/");
         self.anno.setAnnotations(res.data.first.items);
@@ -46,12 +45,33 @@ export default {
         console.error(err);
       }
     },
-    async saveAnnotations() {
-      console.log("saveAnnotations");
-      const annotation = self.anno.getAnnotations()[0];
+    async postAnnotation(annotation) {
+      console.log("postAnnotation");
       console.log(annotation);
       try {
-        const res = await axios.put("/annotations/demo/test1", annotation);
+        const res = await axios.post("/annotations/demo/", annotation);
+        console.log(res);
+      } catch (err) {
+        // Handle Error Here
+        console.error(err);
+      }
+    },
+    async putAnnotation(annotation, id) {
+      console.log("putAnnotation");
+      console.log(annotation);
+      try {
+        const res = await axios.put("/annotations/demo/"+id, annotation);
+        console.log(res);
+      } catch (err) {
+        // Handle Error Here
+        console.error(err);
+      }
+    },
+    async deleteAnnotation(id) {
+      console.log("deleteAnnotation");
+      console.log(id);
+      try {
+        const res = await axios.delete("/annotations/demo/"+id);
         console.log(res);
       } catch (err) {
         // Handle Error Here
@@ -62,6 +82,25 @@ export default {
   mounted() {
     self.anno = new Annotorious({
       image: document.getElementById("desk"),
+    });
+    self.anno.setAuthInfo({
+      id: "http://127.0.0.1/annotations/demo/",
+      displayName: "miiiy.rocks",
+    });
+
+    this.getAnnotations();
+
+    self.anno.on("createAnnotation", async (annotation) => {
+      delete annotation.id;
+      this.postAnnotation(annotation);
+    });
+
+    self.anno.on("deleteAnnotation", async (annotation) => {
+      this.deleteAnnotation(annotation.id);
+    });
+    
+    self.anno.on("updateAnnotation", async (annotation) => {
+      this.putAnnotation(annotation, annotation.id);
     });
   },
 };
