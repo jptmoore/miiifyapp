@@ -50,7 +50,7 @@ export default {
       console.log(annotation);
       try {
         const res = await axios.post("/annotations/demo/", annotation);
-        console.log(res);
+        return res;
       } catch (err) {
         // Handle Error Here
         console.error(err);
@@ -84,7 +84,6 @@ export default {
       image: document.getElementById("desk"),
     });
     self.anno.setAuthInfo({
-      id: "http://127.0.0.1/annotations/demo/",
       displayName: "miiiy.rocks",
     });
 
@@ -92,15 +91,18 @@ export default {
 
     self.anno.on("createAnnotation", async (annotation) => {
       delete annotation.id;
-      this.postAnnotation(annotation);
+      const res = await this.postAnnotation(annotation);
+      annotation = res.data;
     });
 
     self.anno.on("deleteAnnotation", async (annotation) => {
-      this.deleteAnnotation(annotation.id);
+      let id = annotation.id.split('/').pop();
+      this.deleteAnnotation(id);
     });
     
     self.anno.on("updateAnnotation", async (annotation) => {
-      this.putAnnotation(annotation, annotation.id);
+      let id = annotation.id.split('/').pop();
+      this.putAnnotation(annotation, id);
     });
   },
 };
