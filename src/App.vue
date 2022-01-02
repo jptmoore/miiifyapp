@@ -89,10 +89,12 @@ export default {
 
     this.getAnnotations();
 
-    self.anno.on("createAnnotation", async (annotation) => {
+    self.anno.on("createAnnotation", async (annotation, overrideId) => {
       delete annotation.id;
       const res = await this.postAnnotation(annotation);
       annotation = res.data;
+      let id = annotation.id.split('/').pop();
+      overrideId(id);
     });
 
     self.anno.on("deleteAnnotation", async (annotation) => {
