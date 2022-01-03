@@ -11,7 +11,6 @@
   </div>
   <Footer
     @button-load="getAnnotations"
-    title="annotations"
   />
 </template>
 
@@ -115,6 +114,7 @@ export default {
 </script>
 
 <style>
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -124,27 +124,10 @@ export default {
   margin-top: 60px;
 }
 .container {
-  /* max-width: 500px; */
+  max-width: 800px;
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;
-  border: 1px solid steelblue;
-  padding: 30px;
-  border-radius: 5px;
-}
-
-.btn {
-  display: inline-block;
-  background: rgb(9, 77, 155);
-  color: rgb(22, 128, 199);
-  border: none;
-  padding: 10px 20px;
-  margin: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 15px;
-  font-family: inherit;
 }
 
 .btn {

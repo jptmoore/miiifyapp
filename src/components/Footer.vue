@@ -12,7 +12,7 @@
 import Button from "./Button";
 
 export default {
-  name: "Header",
+  name: "Footer",
   props: {
     title: String,
   },
@@ -25,8 +25,6 @@ export default {
 
 <style scoped>
 div {
-  display: flex;
-  justify-content: flex-end;
   margin-bottom: 20px;
 }
 </style>

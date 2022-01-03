@@ -1,5 +1,5 @@
 <template>
-  <button @click="load()" class="btn">load</button>
+  <button @click="load()" class="btn">reload</button>
 </template>
 
 <script>
