@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  web:
+    image: jptmoore/miiify
+    ports:
+      - "5555:8080"
+    volumes:
+      - ./db:/home/miiify/db
+    restart: always
