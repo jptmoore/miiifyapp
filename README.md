@@ -2,6 +2,11 @@
 
 Simple demo app to annotate an image. 
 
+### Install dependencies
+```
+npm install
+```
+
 ### Start miiify backend (requires Docker)
 ```
 npm run backend
