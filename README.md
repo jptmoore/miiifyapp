@@ -1,24 +1,15 @@
 # miiifyapp
 
-## Project setup
+Simple demo interface to annotate an image. 
+
+### Start miiify backend (requires Docker)
 ```
-npm install
+npm run backend
 ```
 
-### Compiles and hot-reloads for development
+### Start demo
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Visit http://localhost:8080/ and annotate the image by drawing a rectangle with you mouse.
