@@ -9,9 +9,7 @@
       href="https://cdn.jsdelivr.net/npm/@recogito/annotorious@2.5.10/dist/annotorious.min.css"
     />
   </div>
-  <Footer
-    @button-load="getAnnotations"
-  />
+  <Footer @button-load="getAnnotations" />
 </template>
 
 <script>
@@ -34,14 +32,40 @@ export default {
     };
   },
   methods: {
+    async createContainer() {
+      console.log("createContainer");
+      const container = {
+        "@context": [
+          "http://www.w3.org/ns/anno.jsonld",
+          "http://www.w3.org/ns/ldp.jsonld",
+        ],
+        type: ["BasicContainer", "AnnotationCollection"],
+        label: "A demo container",
+      };
+      const headers = {
+        "Slug": "demo",
+      };
+      try {
+        const res = await axios.post("/annotations/", container, { headers: headers });
+        console.log(res);
+        return res;
+      } catch (err) {
+        // Handle Error Here
+        console.error(err);
+      }
+    },
     async getAnnotations() {
       console.log("getAnnotations");
       try {
         const res = await axios.get("/annotations/demo/");
         self.anno.setAnnotations(res.data.first.items);
       } catch (err) {
-        // Handle Error Here
-        console.error(err);
+        // if there is no container we need to create one
+        if (err.response.status == 404) {
+          this.createContainer();
+        } else {
+          console.error(err);
+        }
       }
     },
     async postAnnotation(annotation) {
@@ -59,7 +83,7 @@ export default {
       console.log("putAnnotation");
       console.log(annotation);
       try {
-        const res = await axios.put("/annotations/demo/"+id, annotation);
+        const res = await axios.put("/annotations/demo/" + id, annotation);
         console.log(res);
       } catch (err) {
         // Handle Error Here
@@ -70,7 +94,7 @@ export default {
       console.log("deleteAnnotation");
       console.log(id);
       try {
-        const res = await axios.delete("/annotations/demo/"+id);
+        const res = await axios.delete("/annotations/demo/" + id);
         console.log(res);
       } catch (err) {
         // Handle Error Here
@@ -97,16 +121,16 @@ export default {
       delete newAnnotation.id;
       const res = await this.postAnnotation(newAnnotation);
       // use the response as our annotation
-      self.anno.addAnnotation(res.data)
+      self.anno.addAnnotation(res.data);
     });
 
     self.anno.on("deleteAnnotation", async (annotation) => {
-      let id = annotation.id.split('/').pop();
+      let id = annotation.id.split("/").pop();
       this.deleteAnnotation(id);
     });
-    
+
     self.anno.on("updateAnnotation", async (annotation) => {
-      let id = annotation.id.split('/').pop();
+      let id = annotation.id.split("/").pop();
       this.putAnnotation(annotation, id);
     });
   },
@@ -114,7 +138,6 @@ export default {
 </script>
 
 <style>
-
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
