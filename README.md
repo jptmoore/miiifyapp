@@ -1,6 +1,6 @@
 # miiifyapp
 
-Simple demo interface to annotate an image. 
+Simple demo app to annotate an image. 
 
 ### Start miiify backend (requires Docker)
 ```
