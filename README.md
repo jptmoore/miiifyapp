@@ -12,4 +12,4 @@ npm run backend
 npm run serve
 ```
 
-Visit http://localhost:8080/ and annotate the image by drawing a rectangle with you mouse.
+Visit http://localhost:8080/ and annotate the image by drawing a rectangle with your mouse.
