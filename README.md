@@ -2,7 +2,7 @@
 
 Simple demo app to annotate an image. 
 
-### Get the app and annotation db (using github client)
+### Get the app and annotation db (uses [GitHub CLI](https://github.com/cli/cli))
 ```
 gh repo clone https://github.com/jptmoore/miiifyapp.git
 cd miiifyapp
