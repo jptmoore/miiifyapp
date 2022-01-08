@@ -27,3 +27,7 @@ npm run serve
 Visit http://localhost:8080/ and annotate the image by drawing a rectangle with your mouse.
 
 ![Example](doc/example.png)
+
+### Share your edits
+
+The db directory is the forked [annotations](https://github.com/jptmoore/annotations) repo which you can issue a Pull Request (PR) to.
