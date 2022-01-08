@@ -4,8 +4,8 @@ Simple demo app to annotate an image.
 
 ### Get the app and annotation db (using github client)
 ```
-gh repo clone https://github.com/nationalarchives/miiify.git
-cd miiify
+gh repo clone https://github.com/nationalarchives/miiifyapp.git
+cd miiifyapp
 gh repo fork --clone https://github.com/jptmoore/annotations.git db
 ```
 
