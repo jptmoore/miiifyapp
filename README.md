@@ -1,6 +1,6 @@
 # miiifyapp
 
-Simple demo Vue.js app which uses [Miiify](https://github.com/nationalarchives/miiify) to store annotations to git.
+Simple demo app which uses [annotorious](https://github.com/recogito/annotorious) to annotate images which are stored to a git repo using [Miiify](https://github.com/nationalarchives/miiify).
 
 ### Get the app (uses [GitHub CLI](https://github.com/cli/cli))
 ```
