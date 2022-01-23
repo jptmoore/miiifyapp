@@ -47,3 +47,15 @@ Create a PR from your changes. You can use the defaults when prompted.
 ```
 gh pr create
 ```
+### Get the latest edits
+
+Make sure you are in the directory where the repo is and clean any unstaged changes that might have been generated.
+```
+cd db
+git reset HEAD --hard
+```
+Pull in the any changes from the upstream [annotations](https://github.com/jptmoore/annotations) repository.
+
+```
+git pull upstream master
+```
