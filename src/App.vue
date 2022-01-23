@@ -6,7 +6,7 @@
     </div>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@recogito/annotorious@2.5.10/dist/annotorious.min.css"
+      href="https://cdn.jsdelivr.net/npm/@recogito/annotorious@2.7.1/dist/annotorious.min.css"
     />
   </div>
   <Footer @button-load="getAnnotations" />
