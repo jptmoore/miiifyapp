@@ -1,8 +1,8 @@
 # miiifyapp
 
-Simple demo app which uses [annotorious](https://github.com/recogito/annotorious) to annotate images which are stored to a git repo using [Miiify](https://github.com/nationalarchives/miiify).
+Simple demo app which uses [annotorious](https://github.com/recogito/annotorious) to annotate images which are stored to a git repo using [Miiify](https://github.com/nationalarchives/miiify). Some examples use the [GitHub CLI](https://github.com/cli/cli) to show how to fork a repo and create a pull request from the comamnd line but this can also be easily achieved from the GitHub web interface.
 
-### Get the app (uses [GitHub CLI](https://github.com/cli/cli))
+### Get the app
 ```
 gh repo clone https://github.com/jptmoore/miiifyapp.git
 cd miiifyapp
